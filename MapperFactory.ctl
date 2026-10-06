@@ -92,3 +92,44 @@ class FurnaceMapper :AbstractMapper
     return r;
   }
 };*/
+
+
+
+     err = ferror(f); //Output possible errors
+     if ( err )
+     {
+       DebugN("Error no. ",err," occurred");
+       return;
+     }
+
+     //string content = "This is my file \n";
+     fputs(content, f);  //Write to the file
+
+     fclose(f); //Close file
+  }
+  void rdbOpenExecuteClose(string query)
+  {
+    // Variables
+    dbConnection db;
+
+    // open execute and close
+    rdbOpen(db, dbConnectionString);
+    rdbExecute(db,query);
+    rdbClose(db);
+
+  }
+  dyn_dyn_anytype rdbOpenSelectClose(string query)
+  {
+
+    // Variables
+    dbConnection db;
+    dyn_dyn_anytype result;
+
+    // open query and close db
+    rdbOpen(db, dbConnectionString);
+    rdbSelect(db,query,result);
+    rdbClose(db);
+
+    return result;
+  }
+};
