@@ -133,3 +133,4 @@ class FurnaceMapper :AbstractMapper
     return result;
   }
 };
+
